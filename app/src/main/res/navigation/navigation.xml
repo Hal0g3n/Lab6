@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/movieListFragment">
+
+    <fragment
+        android:id="@+id/movieListFragment"
+        android:name="com.example.lab6.ui.movieList.MovieListFragment"
+        android:label="MovieListFragment" >
+        <action
+            android:id="@+id/action_movieListFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
+        <action
+            android:id="@+id/action_movieListFragment_to_displayMovieFragment"
+            app:destination="@id/displayMovieFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.example.lab6.ui.cart.CartFragment"
+        android:label="cart_fragment"
+        tools:layout="@layout/cart_fragment" >
+        <action
+            android:id="@+id/action_cartFragment_to_transactionFragment"
+            app:destination="@id/transactionFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/displayMovieFragment"
+        android:name="com.example.lab6.ui.movieInfo.DisplayMovieFragment"
+        android:label="movie_display_fragment"
+        tools:layout="@layout/movie_display_fragment" >
+        <action
+            android:id="@+id/action_displayMovieFragment_to_ticketingFragment"
+            app:destination="@id/ticketingFragment" />
+        <argument
+            android:name="movieIndex"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ticketingFragment"
+        android:name="com.example.lab6.ui.movieBuy.TicketingFragment"
+        android:label="ticketing_fragment"
+        tools:layout="@layout/ticketing_fragment" >
+        <action
+            android:id="@+id/action_ticketingFragment_to_cartFragment"
+            app:destination="@id/cartFragment"
+            app:popUpTo="@id/movieListFragment"
+            app:popUpToInclusive="false" />
+        <argument
+            android:name="movieIndex"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/transactionFragment"
+        android:name="com.example.lab6.ui.cart.TransactionFragment"
+        android:label="fragment_transaction"
+        tools:layout="@layout/fragment_transaction" />
+</navigation>
